@@ -17,6 +17,7 @@
     "ghcr.io/devcontainers/features/github-cli:1": {
       "version": "2"
     },
+    "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/powershell:1": {
       "version": "latest"
     },
@@ -25,10 +26,37 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "GitHub.copilot",
-        "GitHub.vscode-github-actions",
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "github.codespaces",
+        "github.github-vscode-theme",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        "hashicorp.terraform",
+        "hediet.vscode-drawio",
+        "ms-azuretools.azure-dev",
+        "ms-azuretools.vscode-azure-github-copilot",
+        "ms-azuretools.vscode-azureappservice",
+        "ms-azuretools.vscode-azurecontainerapps",
+        "ms-azuretools.vscode-azurefunctions",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "ms-azuretools.vscode-azurestaticwebapps",
+        "ms-azuretools.vscode-azurestorage",
+        "ms-azuretools.vscode-azureterraform",
+        "ms-azuretools.vscode-azurevirtualmachines",
+        "ms-azuretools.vscode-bicep",
+        "ms-azuretools.vscode-cosmosdb",
+        "ms-azuretools.vscode-docker",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-python.debugpy",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
         "ms-vscode.azurecli",
-        "ms-vscode.vscode-node-azure-pack"
+        "ms-vscode.powershell",
+        "stylelint.vscode-stylelint",
+        "vscode-icons-team.vscode-icons"
       ]
     }
   }

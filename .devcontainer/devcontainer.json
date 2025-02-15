@@ -13,6 +13,7 @@
     "ghcr.io/devcontainers/features/github-cli:1": {
       "version": "2"
     },
+    "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/powershell:1": {
       "version": "latest"
     },

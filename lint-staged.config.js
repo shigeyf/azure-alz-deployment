@@ -14,6 +14,8 @@
 /** @type {import("lint-staged").configObject} */
 const config = {
   // Formatting
+  // [Terraform]
+  '**/*.tf': (filenames) => filenames.map((filename) => `npm run format:terraform '${filename}'`),
   // [JSON]
   '**/*.json': (filenames) => filenames.map((filename) => `npm run format:lint-staged '${filename}'`),
   // [YAML]
@@ -24,6 +26,13 @@ const config = {
   //'**/*.dart': (filenames) => filenames.map((filename) => `npm run format:dart:lint-staged '${filename}'`),
 
   // Linting
+  // [Terraform]
+  //'**/*.tf': (filenames) => `tflint --recursive`
+  '**/*.tf': (filenames) => {
+    const directories = filenames.map((filename) => path.dirname(filename));
+    const uniqueDirectories = [...new Set(directories)];
+    return uniqueDirectories.map((dir) => `tflint --recursive --chdir ${dir}`);
+  }
   // Uncomment if needed
   // [JS/TS/Vue]
   // '**/*.{js,jsx,ts,tsx,vue}': (filenames) => filenames.map((filename) => `npm run eslint:lint-staged '${filename}'`),

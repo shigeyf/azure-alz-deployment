@@ -1,0 +1,3 @@
+[submodule "deployments/terraform/externals/terraform-azurerm-naming"]
+	path = deployments/terraform/externals/terraform-azurerm-naming
+	url = https://github.com/shigeyf/terraform-azurerm-naming

@@ -76,7 +76,13 @@ resource "azurerm_private_endpoint" "storage_private_endpoint" {
     subresource_names              = ["Blob"]
   }
 
+  private_dns_zone_group {
+    name                 = "dns-zone-group"
+    private_dns_zone_ids = [azurerm_private_dns_zone.tfbackend_st_private_dns_zone.id]
+  }
+
   depends_on = [
     azurerm_storage_account.tfbackend,
+    azurerm_private_dns_zone.tfbackend_st_private_dns_zone,
   ]
 }

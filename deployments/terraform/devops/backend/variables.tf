@@ -29,6 +29,11 @@ variable "deploy_private_endpoints" {
   default     = true
 }
 
+variable "virtual_network_id" {
+  type        = string
+  description = "Virtual network ID for the private endpoint"
+}
+
 variable "private_endpoint_subnet_id" {
   type        = string
   description = "Subnet ID for the private endpoint"

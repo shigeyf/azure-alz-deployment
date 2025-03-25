@@ -31,6 +31,7 @@ module "backend_storage" {
   tags                = var.tags
 
   deploy_private_endpoints   = var.deploy_private_endpoints
+  virtual_network_id         = module.network.network_resources.vnet_id
   private_endpoint_subnet_id = module.network.network_resources.private_endpoints_subnet_id
 }
 

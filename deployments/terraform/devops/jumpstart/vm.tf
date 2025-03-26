@@ -28,7 +28,7 @@ resource "azurerm_windows_virtual_machine" "jumpbox_vm" {
   ]
 
   admin_username = var.virtual_machine.vm_admin_user
-  admin_password = "P@$$w0rd1234!"
+  admin_password = azurerm_key_vault_secret.vmpassword.value
 
   additional_capabilities {
     hibernation_enabled = var.virtual_machine.vm_hibernation_enabled

@@ -33,6 +33,7 @@ variable "virtual_machine" {
     vm_os_windows          = bool
     vm_os_disk_size        = number
     vm_os_disk_type        = string
+    vm_password_kv_id      = string
     vm_size                = string
     vm_subnet_id           = string
     bastion_subnet_id      = string

@@ -24,7 +24,8 @@ locals {
   location_short_name = module.azure_region.location_short
   //osdisk_suffix       = "osdisk"
 
-  vm_name = module.naming.virtual_machine.short_name_unique
+  vm_name          = module.naming.virtual_machine.short_name_unique
+  vm_password_name = join("-", ["vmpassword", local.vm_name])
   //vm_os_disk_name = join("-", [local.osdisk_suffix, local.vm_name])
   vm_nic_name = join("-", [
     module.naming.network_interface.name_with_pad,

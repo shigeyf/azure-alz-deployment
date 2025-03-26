@@ -50,6 +50,7 @@ module "jumpstart" {
     vm_os_windows          = var.virtual_machine.vm_os_windows
     vm_os_disk_size        = var.virtual_machine.vm_os_disk_size
     vm_os_disk_type        = var.virtual_machine.vm_os_disk_type
+    vm_password_kv_id      = module.backend_storage.backend_resources.key_vault_id
     vm_size                = var.virtual_machine.vm_size
     vm_subnet_id           = module.network.network_resources.jumpbox_subnet_id
     bastion_subnet_id      = module.network.network_resources.bastion_subnet_id

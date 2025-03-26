@@ -23,6 +23,12 @@ variable "tags" {
   default     = {}
 }
 
+variable "public_network_access_enabled" {
+  type        = bool
+  description = "Flag to enable public network access"
+  default     = false
+}
+
 variable "deploy_private_endpoints" {
   type        = bool
   description = "Flag to deploy the private endpoints"

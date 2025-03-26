@@ -29,6 +29,12 @@ variable "existing_rg_name" {
   default     = ""
 }
 
+variable "initial_deploy_via_public" {
+  description = "Flag to determine if the initial deployment via public Internet"
+  type        = bool
+  default     = false
+}
+
 variable "deploy_network" {
   description = "Flag to deploy the network resources"
   type        = bool

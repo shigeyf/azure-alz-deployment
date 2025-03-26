@@ -30,9 +30,10 @@ module "backend_storage" {
   resource_group_name = var.use_existing_rg ? data.azurerm_resource_group.existing_rg_base[0].name : azurerm_resource_group.rg_base[0].name
   tags                = var.tags
 
-  deploy_private_endpoints   = var.deploy_private_endpoints
-  virtual_network_id         = module.network.network_resources.vnet_id
-  private_endpoint_subnet_id = module.network.network_resources.private_endpoints_subnet_id
+  public_network_access_enabled = var.initial_deploy_via_public
+  deploy_private_endpoints      = var.deploy_private_endpoints
+  virtual_network_id            = module.network.network_resources.vnet_id
+  private_endpoint_subnet_id    = module.network.network_resources.private_endpoints_subnet_id
 }
 
 module "jumpstart" {

@@ -15,7 +15,7 @@ resource "azurerm_storage_account" "tfbackend" {
   nfsv3_enabled                   = false
   allow_nested_items_to_be_public = false
   shared_access_key_enabled       = false
-  public_network_access_enabled   = true
+  public_network_access_enabled   = var.public_network_access_enabled
 
   identity {
     type = "UserAssigned"

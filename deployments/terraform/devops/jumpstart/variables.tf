@@ -30,6 +30,7 @@ variable "virtual_machine" {
     vm_admin_ssh_key       = string
     vm_bastion_sku         = string
     vm_hibernation_enabled = bool
+    vm_os_windows          = bool
     vm_os_disk_size        = number
     vm_os_disk_type        = string
     vm_size                = string

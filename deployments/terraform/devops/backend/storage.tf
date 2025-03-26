@@ -47,6 +47,7 @@ resource "azurerm_management_lock" "tfbackend-storage" {
 
   depends_on = [
     azurerm_storage_account.tfbackend,
+    azurerm_storage_container.tfbackend-container,
   ]
 }
 

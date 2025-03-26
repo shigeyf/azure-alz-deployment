@@ -47,6 +47,7 @@ module "jumpstart" {
     vm_admin_ssh_key       = file(var.virtual_machine.vm_admin_ssh_key_file)
     vm_bastion_sku         = var.virtual_machine.vm_bastion_sku
     vm_hibernation_enabled = var.virtual_machine.vm_hibernation_enabled
+    vm_os_windows          = var.virtual_machine.vm_os_windows
     vm_os_disk_size        = var.virtual_machine.vm_os_disk_size
     vm_os_disk_type        = var.virtual_machine.vm_os_disk_type
     vm_size                = var.virtual_machine.vm_size

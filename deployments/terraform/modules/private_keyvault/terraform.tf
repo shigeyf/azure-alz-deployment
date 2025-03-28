@@ -19,6 +19,11 @@ terraform {
       version = ">= 3.5.0, < 4.0.0"
     }
 
+    time = {
+      source  = "hashicorp/time"
+      version = "~> 0.1"
+    }
+
     modtm = {
       source  = "azure/modtm"
       version = "~> 0.3"

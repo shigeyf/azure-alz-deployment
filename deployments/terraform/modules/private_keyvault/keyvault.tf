@@ -1,6 +1,6 @@
 // keyvault.tf
 
-resource "azurerm_key_vault" "key_vault" {
+resource "azurerm_key_vault" "keyvault" {
   name                = local.keyvault_name
   location            = var.location
   resource_group_name = var.resource_group_name

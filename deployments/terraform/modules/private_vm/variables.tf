@@ -51,6 +51,12 @@ variable "vm_configs" {
   })
 }
 
+variable "vm_secret_keyvault_enabled" {
+  type        = bool
+  description = "Enable Key Vault for storing VM secrets"
+  default     = false
+}
+
 variable "vm_secret_keyvault_id" {
   type        = string
   description = "Key Vault Id for storing VM secrets"

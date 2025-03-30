@@ -33,4 +33,8 @@ resource "azurerm_key_vault_secret" "vm_ssh_key" {
   name         = local.vm_ssh_key_name
   value        = tls_private_key.ssh_key[0].public_key_openssh
   key_vault_id = var.vm_secret_keyvault_id
+
+  depends_on = [
+    var.vm_secret_role_assignment,
+  ]
 }

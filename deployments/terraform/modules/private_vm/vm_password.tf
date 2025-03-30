@@ -13,4 +13,8 @@ resource "azurerm_key_vault_secret" "vm_password" {
   name         = local.vm_password_name
   value        = random_password.vm_password[0].result
   key_vault_id = var.vm_secret_keyvault_id
+
+  depends_on = [
+    var.vm_secret_role_assignment,
+  ]
 }

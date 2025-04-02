@@ -16,6 +16,7 @@ module "keyvault" {
   resource_group_name        = azurerm_resource_group.rg_base.name
   tags                       = var.tags
   private_endpoint_subnet_id = module.vnet.private_vnet.subnet_ids[var.vnet_private_endpoints_subnet_index]
+  private_dns_zone_ids       = [azurerm_private_dns_zone.keyvault.id]
   role_assignments = [
     {
       principal_id         = var.terraform_service_principal_object_id
@@ -42,6 +43,7 @@ module "storage" {
   ]
   keyvault_id                = module.keyvault.private_keyvault.keyvault_id
   private_endpoint_subnet_id = module.vnet.private_vnet.subnet_ids[var.vnet_private_endpoints_subnet_index]
+  private_dns_zone_ids       = [azurerm_private_dns_zone.storage.id]
   role_assignments = [
     {
       principal_id         = var.terraform_service_principal_object_id

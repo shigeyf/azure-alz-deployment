@@ -59,14 +59,43 @@ module "devops" {
   terraform_service_principal_object_id = var.terraform_service_principal_object_id
 }
 
-resource "azurerm_virtual_network_peering" "devops_vpeer" {
-  name                = module.naming.virtual_network_peering.name_unique
-  resource_group_name = azurerm_resource_group.rg_base.name
+resource "azurerm_private_dns_zone_virtual_network_link" "link" {
+  for_each              = module.devops.devops_resources.private_dns_zones
+  name                  = "vnet-link-${module.vnet.private_vnet.vnet_name}"
+  resource_group_name   = module.devops.devops_resources.resource_group_name
+  tags                  = var.tags
+  private_dns_zone_name = each.key
+  virtual_network_id    = module.vnet.private_vnet.vnet_id
+}
 
-  virtual_network_name         = module.vnet.private_vnet.vnet_name
-  remote_virtual_network_id    = module.devops.devops_resources.vnet_resources.vnet_id
-  allow_virtual_network_access = true
-  allow_forwarded_traffic      = true
-  allow_gateway_transit        = false
-  use_remote_gateways          = false
+module "vnet_peering" {
+  source = "../modules/vnet_peering"
+  peering_pairs = [
+    {
+      to = {
+        name                     = "bootstrap"
+        vnet_resource_group_name = azurerm_resource_group.rg_base.name
+        vnet_id                  = module.vnet.private_vnet.vnet_id
+        vnet_name                = module.vnet.private_vnet.vnet_name
+        options = {
+          allow_virtual_network_access = true
+          allow_forwarded_traffic      = true
+          allow_gateway_transit        = false
+          use_remote_gateways          = false
+        }
+      }
+      from = {
+        name                     = "devops"
+        vnet_resource_group_name = module.devops.devops_resources.resource_group_name
+        vnet_id                  = module.devops.devops_resources.vnet_resources.vnet_id
+        vnet_name                = module.devops.devops_resources.vnet_resources.vnet_name
+        options = {
+          allow_virtual_network_access = true
+          allow_forwarded_traffic      = true
+          allow_gateway_transit        = false
+          use_remote_gateways          = false
+        }
+      }
+    }
+  ]
 }

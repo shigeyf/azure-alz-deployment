@@ -5,6 +5,7 @@ output "bootstrap_resources" {
     resource_group_id = azurerm_resource_group.rg_base.id
     keyvault_id       = module.keyvault.public_keyvault_id
     vnet_resources    = module.vnet.private_vnet
+    vnet_peerings     = module.vnet_peering.vnet_peerings
   }
   description = "Ids for Bootstrap resources"
 }

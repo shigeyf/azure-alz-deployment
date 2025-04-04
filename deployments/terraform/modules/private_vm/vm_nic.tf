@@ -1,7 +1,7 @@
 // vm_nic.tf
 
 # Network Interface
-resource "azurerm_network_interface" "vm_nic" {
+resource "azurerm_network_interface" "this" {
   name                = local.vm_nic_name
   location            = var.location
   resource_group_name = var.resource_group_name

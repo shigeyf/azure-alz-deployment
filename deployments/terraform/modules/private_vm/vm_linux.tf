@@ -1,7 +1,7 @@
 // vm_linux.tf
 
 # Virtual Machine Linux
-resource "azurerm_linux_virtual_machine" "vm" {
+resource "azurerm_linux_virtual_machine" "this" {
   count = var.vm_configs.os_type == local.vm_os_type_linux ? 1 : 0
 
   name                = local.vm_name
@@ -11,17 +11,17 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   size = var.vm_configs.size
   network_interface_ids = [
-    azurerm_network_interface.vm_nic.id,
+    azurerm_network_interface.this.id,
   ]
 
   admin_username                  = var.vm_configs.admin_username
   disable_password_authentication = !var.vm_configs.options.password_enabled
-  admin_password                  = var.vm_configs.options.password_enabled ? random_password.vm_password[0].result : null
+  admin_password                  = var.vm_configs.options.password_enabled ? random_password.this[0].result : null
   dynamic "admin_ssh_key" {
     for_each = var.vm_configs.options.ssh_key_enabled ? [1] : []
     content {
       username   = var.vm_configs.admin_username
-      public_key = azurerm_ssh_public_key.vm_ssh_key[0].public_key
+      public_key = azurerm_ssh_public_key.this[0].public_key
     }
   }
 

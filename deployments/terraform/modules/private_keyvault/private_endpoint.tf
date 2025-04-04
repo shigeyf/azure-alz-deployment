@@ -1,6 +1,6 @@
 // private_endpoint.tf
 
-resource "azurerm_private_endpoint" "keyvault" {
+resource "azurerm_private_endpoint" "this" {
   name                = local.keyvault_pe_name
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -9,7 +9,7 @@ resource "azurerm_private_endpoint" "keyvault" {
 
   private_service_connection {
     name                           = "keyvault-connection"
-    private_connection_resource_id = azurerm_key_vault.keyvault.id
+    private_connection_resource_id = azurerm_key_vault.this.id
     is_manual_connection           = false
     subresource_names              = ["vault"]
   }
@@ -20,7 +20,7 @@ resource "azurerm_private_endpoint" "keyvault" {
   }
 
   depends_on = [
-    azurerm_key_vault.keyvault,
+    azurerm_key_vault.this,
     time_sleep.wait_for_propagation,
   ]
 }

@@ -33,4 +33,11 @@ resource "azurerm_windows_virtual_machine" "vm" {
     sku       = var.vm_configs.os_source_image.sku
     version   = var.vm_configs.os_source_image.version
   }
+
+  lifecycle {
+    ignore_changes = [
+      public_ip_address,
+      public_ip_addresses,
+    ]
+  }
 }

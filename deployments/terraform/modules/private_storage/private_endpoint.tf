@@ -1,6 +1,6 @@
 // private_endpoint.tf
 
-resource "azurerm_private_endpoint" "storage" {
+resource "azurerm_private_endpoint" "this" {
   name                = local.storage_pe_name
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -9,7 +9,7 @@ resource "azurerm_private_endpoint" "storage" {
 
   private_service_connection {
     name                           = "storage-connection"
-    private_connection_resource_id = azurerm_storage_account.storage.id
+    private_connection_resource_id = azurerm_storage_account.this.id
     is_manual_connection           = false
     subresource_names              = ["Blob"]
   }
@@ -20,6 +20,6 @@ resource "azurerm_private_endpoint" "storage" {
   }
 
   depends_on = [
-    azurerm_storage_account.storage,
+    azurerm_storage_account.this,
   ]
 }

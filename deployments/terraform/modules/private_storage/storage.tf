@@ -1,7 +1,6 @@
 // storage.tf
 
-// Storage account resource
-resource "azurerm_storage_account" "storage" {
+resource "azurerm_storage_account" "this" {
   name                = local.storage_account_name
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -20,11 +19,11 @@ resource "azurerm_storage_account" "storage" {
   identity {
     type = "UserAssigned"
     identity_ids = [
-      azurerm_user_assigned_identity.storage.id,
+      azurerm_user_assigned_identity.this.id,
     ]
   }
 
   depends_on = [
-    azurerm_user_assigned_identity.storage,
+    azurerm_user_assigned_identity.this,
   ]
 }

@@ -8,6 +8,17 @@ resource "azurerm_subnet" "snet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [each.value.address_prefix]
 
+  dynamic "delegation" {
+    for_each = each.value.delegation != null ? each.value.delegation : []
+    content {
+      name = delegation.value.name
+      service_delegation {
+        name    = delegation.value.service_delegation.name
+        actions = delegation.value.service_delegation.actions
+      }
+    }
+  }
+
   depends_on = [
     azurerm_virtual_network.vnet,
   ]

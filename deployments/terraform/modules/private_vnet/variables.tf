@@ -20,15 +20,3 @@ variable "tags" {
   description = "Resource tags"
   default     = {}
 }
-
-variable "vnet_configs" {
-  description = "Virtual Network configurations"
-  type = object({
-    address_prefix = string # Address prefix for the private vnet
-    subnets = map(object({
-      name                  = string # Subnet name
-      address_prefix        = string # Subnet address prefix
-      naming_prefix_enabled = bool
-    }))
-  })
-}

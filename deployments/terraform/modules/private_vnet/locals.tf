@@ -19,7 +19,4 @@ module "naming" {
 locals {
   location_short_name  = module.azure_region.location_short
   subnet_naming_prefix = module.naming.subnet.slug
-
-  // Resource names
-  vnet_name = module.naming.virtual_network.name_unique
 }

@@ -5,5 +5,5 @@ output "public_keyvault_id" {
 }
 
 output "public_keyvault_role_assignment" {
-  value = azurerm_role_assignment.key_vault_admin_for_current_user
+  value = azurerm_role_assignment.key_vault_admin
 }

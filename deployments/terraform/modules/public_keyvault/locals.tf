@@ -18,7 +18,4 @@ module "naming" {
 
 locals {
   location_short_name = module.azure_region.location_short
-
-  // Resource names
-  keyvault_name = module.naming.key_vault.short_name_unique
 }
